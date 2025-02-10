@@ -1,0 +1,83 @@
+openapi: 3.0.0
+info:
+  title: Resume Parser API
+  version: 1.0.0
+  description: API for uploading resumes and extracting structured JSON data.
+servers:
+  - url: http://127.0.0.1:5000
+paths:
+  /upload-resume:
+    post:
+      summary: Upload a resume for extraction
+      description: Upload a resume and get structured JSON data.
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                  description: The resume file (PDF, image, DOCX, or PPTX)
+      responses:
+        '200':
+          description: Successfully parsed the resume
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  name:
+                    type: string
+                  email:
+                    type: string
+                  phone:
+                    type: string
+                  linkedin:
+                    type: string
+                  address:
+                    type: string
+                  education:
+                    type: array
+                    items:
+                      type: string
+                  skills:
+                    type: array
+                    items:
+                      type: string
+                  experience:
+                    type: array
+                    items:
+                      type: string
+                  languages:
+                    type: array
+                    items:
+                      type: string
+                  dob:
+                    type: string
+                  certifications:
+                    type: array
+                    items:
+                      type: string
+                  tools:
+                    type: array
+                    items:
+                      type: string
+                  summary:
+                    type: string
+                  interests:
+                    type: array
+                    items:
+                      type: string
+                  courses_conferences:
+                    type: array
+                    items:
+                      type: string
+        '400':
+          description: Bad request (invalid input or missing file).
+        '500':
+          description: Server error (failed extraction).

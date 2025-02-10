@@ -1,0 +1,12 @@
+Flask
+Flask-Cors
+flask-swagger-ui
+uuid
+PyPDF2
+python-docx
+python-pptx
+spacy
+pytesseract
+opencv-python
+numpy
+pdf2image
